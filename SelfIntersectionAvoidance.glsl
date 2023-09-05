@@ -99,9 +99,6 @@ void safeSpawnOffset(
 
     wldOffset = fma( wldScale, objOffset, wldOffset );
 
-    precise vec3 wldFront = fma( vec3( wldOffset ), wldNormal, wldPosition );
-    precise vec3 wldBack = fma( -vec3( wldOffset ), wldNormal, wldPosition );
-
     // output safe front and back spawn points
     outObjPosition = objPosition;
     outWldPosition = wldPosition;

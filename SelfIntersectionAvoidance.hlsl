@@ -97,9 +97,6 @@ void safeSpawnPoint(
 
     wldOffset = mad( wldScale, objOffset, wldOffset );
 
-    precise float3 wldFront = mad( wldOffset, wldNormal, wldPosition );
-    precise float3 wldBack = mad( -wldOffset, wldNormal, wldPosition );
-
     // output safe front and back spawn points
     outObjPosition = objPosition;
     outWldPosition = wldPosition;
