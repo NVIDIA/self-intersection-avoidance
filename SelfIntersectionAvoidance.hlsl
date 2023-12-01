@@ -78,7 +78,7 @@ void safeSpawnPoint(
     const float c0 = 5.9604644775390625E-8f;
     const float c1 = 1.788139769587360206060111522674560546875E-7f;
 
-    const float3 extent3 = abs( edge1 ) + abs( edge2 ) + abs( abs( edge1 ) - abs( edge2 ) );
+    const float3 extent3 = abs( edge1 ) + abs( edge2 ) + abs( edge1 - edge2 );
     const float  extent = max( max( extent3.x, extent3.y ), extent3.z );
 
     // bound object space error due to reconstruction and intersection

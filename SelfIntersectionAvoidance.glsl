@@ -78,7 +78,7 @@ void safeSpawnOffset(
     const float c0 = 5.9604644775390625E-8f;
     const float c1 = 1.788139769587360206060111522674560546875E-7f;
 
-    const vec3  extent3 = abs( edge1 ) + abs( edge2 ) + abs( abs( edge1 ) - abs( edge2 ) );
+    const vec3  extent3 = abs( edge1 ) + abs( edge2 ) + abs( edge1 - edge2 );
     const float extent = max( max( extent3.x, extent3.y ), extent3.z );
 
     // bound object space error due to reconstruction and intersection
@@ -90,7 +90,7 @@ void safeSpawnOffset(
     vec3 wldErr = fma( vec3( c1 ), mat3( abs_o2w ) * abs( objPosition ), ( c2 * abs( o2w[3] ) ) );
 
     // bound object space error due to world to object transform
-    mat4x3 abs_w2o = mat4x3( abs( o2w[0] ), abs( o2w[1] ), abs( o2w[2] ), abs( o2w[3] ) );
+    mat4x3 abs_w2o = mat4x3( abs( w2o[0] ), abs( w2o[1] ), abs( w2o[2] ), abs( w2o[3] ) );
     objErr = fma( vec3( c2 ), ( abs_w2o * vec4( abs( wldPosition ), 1 ) ), objErr );
 
     // compute world space self intersection avoidance offset
